@@ -66,11 +66,7 @@ public class BookCollection {
         System.out.println("El total de páginas es " + paginas);
 
         System.out.println("6.");
-        int librosTotal = 0;
-        for (Books b : libros) {
-            librosTotal++;
-        }
-        int media = paginas / librosTotal;
+        int media = paginas / libros.size();
         for (Books b : libros) {
             if (b.getNumeroPaginas() > media) {
                 System.out.println("El libro " + b.getTitulo() + " supera el promedio de número de páginas");
