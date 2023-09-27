@@ -88,7 +88,7 @@ public class BookCollection {
         ArrayList<String> autoresRepetidos = new ArrayList<>();
         System.out.println("Autores con más de 1 libro:");
         for (Books b : libros) {
-            if (autores2.contains(b.getAutor())) {
+            if (autores2.contains(b.getAutor()) && !autoresRepetidos.contains(b.getAutor())) {
                 autoresRepetidos.add(b.getAutor());
             } else {
                 autores2.add(b.getAutor());
@@ -108,5 +108,11 @@ public class BookCollection {
                 System.out.println("El libro con mayor número de páginas es " + b.getTitulo());
             }
         }
+
+        ArrayList<String> titulosLibros = new ArrayList<>();
+        for (Books b : libros) {
+            titulosLibros.add(b.getTitulo());
+        }
+        System.out.println(titulosLibros);
     }
 }
