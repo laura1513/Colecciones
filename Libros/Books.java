@@ -1,4 +1,4 @@
-public class Books {
+public class Books implements Comparable<Books>{
     String titulo;
     String autor;
     int numeroPaginas;
@@ -34,5 +34,10 @@ public class Books {
 
     public void setNumeroPaginas(int numeroPaginas) {
         this.numeroPaginas = numeroPaginas;
+    }
+
+    @Override
+    public int compareTo(Books o) {
+        return this.getTitulo().compareTo(o.getTitulo());
     }
 }

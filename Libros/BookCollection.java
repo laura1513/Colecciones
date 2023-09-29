@@ -114,5 +114,11 @@ public class BookCollection {
             titulosLibros.add(b.getTitulo());
         }
         System.out.println(titulosLibros);
+
+        System.out.println("Libros ordenados alfabeticamente: ");
+        Collections.sort(libros);
+        for (Books b : libros) {
+            System.out.println(b.getTitulo());
+        }
     }
 }
