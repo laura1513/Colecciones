@@ -21,6 +21,7 @@ public class BookCollection {
             }
         }
         System.out.println("Hay " + cont1 + " libro(s) con más de 500 páginas");
+        System.out.println();
 
         System.out.println("2.");
         /*long cont2 = libros.stream().filter(l -> l.getNumeroPaginas() < 300).count();
@@ -32,6 +33,7 @@ public class BookCollection {
             }
         }
         System.out.println("Hay " + cont2 + " libro(s) con menos de 300 páginas");
+        System.out.println();
 
         System.out.println("3.");
         for (Books b : libros) {
@@ -39,6 +41,7 @@ public class BookCollection {
                 System.out.println(b.getTitulo() + " tiene más de 500 páginas");
             }
         }
+        System.out.println();
 
         System.out.println("4.");
         Collections.sort(libros, new Comparator<Books>() {
@@ -57,6 +60,7 @@ public class BookCollection {
             System.out.println(libros.get(i).getTitulo());
         }
         //libros.stream().sorted((l1, l2) -> Integer.compare(l2.getNumeroPaginas(), l1.getNumeroPaginas())).limit(3).map(l -> l.getTitulo()).forEach(System.out::println);
+        System.out.println();
 
         System.out.println("5.");
         int paginas = 0;
@@ -64,6 +68,7 @@ public class BookCollection {
             paginas += b.getNumeroPaginas();
         }
         System.out.println("El total de páginas es " + paginas);
+        System.out.println();
 
         System.out.println("6.");
         int media = paginas / libros.size();
@@ -72,6 +77,7 @@ public class BookCollection {
                 System.out.println("El libro " + b.getTitulo() + " supera el promedio de número de páginas");
             }
         }
+        System.out.println();
 
         System.out.println("7.");
         ArrayList<String> autores = new ArrayList<>();
@@ -82,6 +88,7 @@ public class BookCollection {
             }
         }
         System.out.println(autores);
+        System.out.println();
 
         System.out.println("8.");
         ArrayList<String> autores2 = new ArrayList<>();
@@ -95,6 +102,7 @@ public class BookCollection {
             }
         }
         System.out.println(autoresRepetidos);
+        System.out.println();
 
         System.out.println("9.");
         int mayNumPag = 0;
@@ -108,17 +116,15 @@ public class BookCollection {
                 System.out.println("El libro con mayor número de páginas es " + b.getTitulo());
             }
         }
+        System.out.println();
 
+        System.out.println("10.");
+        System.out.print("Tosos los libros: ");
         ArrayList<String> titulosLibros = new ArrayList<>();
         for (Books b : libros) {
             titulosLibros.add(b.getTitulo());
         }
         System.out.println(titulosLibros);
-
-        System.out.println("Libros ordenados alfabeticamente: ");
-        Collections.sort(libros);
-        for (Books b : libros) {
-            System.out.println(b.getTitulo());
-        }
+        System.out.println();
     }
 }
