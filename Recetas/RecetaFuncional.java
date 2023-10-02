@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class RecetaFuncional {
@@ -16,10 +18,11 @@ public class RecetaFuncional {
         /*System.out.println("Recetas de menos de 500 calorías: ");
         recetas.stream().filter(r -> r.getCalorias() < 500).map(r -> r.getNombre()).forEach(System.out::println);*/
 
-        String recetasCarnes = recetas.stream().filter(r -> r.getCategoria() == "Carnes").map(Receta::getNombre).collect(Collectors.joining(", ", "Receta(s) de Carnes: ", "."));
-        System.out.println(recetasCarnes);
-        /*System.out.println("Recetas de Carnes: ");
-        recetas.stream().filter(r -> r.getCategoria() == "Carnes").map(r -> r.getNombre()).forEach(System.out::println);*/
+        /*String recetasCarnes = recetas.stream().filter(r -> r.getCategoria() == "Carnes").map(Receta::getNombre).collect(Collectors.joining(", ", "Receta(s) de Carnes: ", "."));
+        System.out.println(recetasCarnes);*/
+        //recetas.stream().sorted(Compar).filter(r -> r.getCategoria() == "Carnes").map(r -> r.getNombre()).forEach(System.out::println);
+        System.out.println("Recetas de Carnes: ");
+        recetas.stream().sorted((r1, r2) -> r1.getNombre().compareTo(r2.getNombre())).filter(r -> r.getCategoria() == "Carnes").map(r -> r.getNombre()).forEach(System.out::println);
 
         double mediaCaloriasVerduras = recetas.stream().filter(r -> r.getCategoria() == "Verduras").mapToInt(Receta::getCalorias).average().getAsDouble();
         System.out.println("La media de calorias en la categoria de verdura es: " + mediaCaloriasVerduras + "cal");
