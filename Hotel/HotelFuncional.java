@@ -13,10 +13,12 @@ public class HotelFuncional {
         hoteles.add(new Hotel("Alcora", "Santander", 2));
 
         System.out.println("Hoteles con al menos 3 estrellas:");
-        hoteles.stream()
+        List hoteles3 = hoteles.stream()
                 .filter(h -> h.getRating() >= 3)
-                .forEach(System.out::println);
-
+                .toList();
+        for (int i = 0; i < hoteles3.size(); i++) {
+            System.out.println(hoteles3.get(i));
+        }
         System.out.println();
 
         String hotelesSantander = hoteles.stream()
