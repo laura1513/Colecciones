@@ -1,6 +1,7 @@
 import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class BookFuncional {
@@ -65,17 +66,12 @@ public class BookFuncional {
         System.out.println();
 
         //8
-        System.out.println("8.");
-        ArrayList<String> autores2 = new ArrayList<>();
-        ArrayList<String> autoresRepetidos = new ArrayList<>();
-        System.out.println("Autores con más de 1 libro:");
-        for (Books b : libros) {
-            if (autores2.contains(b.getAutor()) && !autoresRepetidos.contains(b.getAutor())) {
-                autoresRepetidos.add(b.getAutor());
-            } else {
-                autores2.add(b.getAutor());
-            }
-        }
+        String autoresRepetidos = libros.stream()
+                .collect(Collectors.groupingBy(Books::getAutor, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(b -> b.getValue() > 1)
+                .map(Map.Entry::getKey).collect(Collectors.joining(", ", "Los autores con más de 1 libro son: ", "."));
         System.out.println(autoresRepetidos);
         System.out.println();
 
