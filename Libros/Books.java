@@ -40,4 +40,13 @@ public class Books implements Comparable<Books>{
     public int compareTo(Books o) {
         return this.getTitulo().compareTo(o.getTitulo());
     }
+
+    @Override
+    public String toString() {
+        return "Books{" +
+                "titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", numeroPaginas=" + numeroPaginas +
+                '}';
+    }
 }
