@@ -1,5 +1,6 @@
 import java.awt.print.Book;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -39,20 +40,29 @@ public class BookFuncional {
         String tresMayorNumPag = libros.stream()
                 .sorted((l1, l2) -> Integer.compare(l2.getNumeroPaginas(), l1.getNumeroPaginas()))
                 .limit(3)
-                .map(l -> l.getTitulo()).collect(Collectors.joining(", ", "Los 3 libros con más páginas son: ", "."));
+                .map(l -> l.getTitulo())
+                .collect(Collectors.joining(", ", "Los 3 libros con más páginas son: ", "."));
         System.out.println(tresMayorNumPag);
         System.out.println();
 
         //5
-        int paginas = libros.stream().map(l -> l.getNumeroPaginas()).reduce(0, (a, b) -> a + b);
+        int paginas = libros.stream()
+                .map(l -> l.getNumeroPaginas())
+                .reduce(0, (a, b) -> a + b);
+        /*int paginas2 = libros.stream()
+                .mapToInt(Books::getNumeroPaginas)
+                .sum();*/
         System.out.println("La suma total del número de paǵinas es: " + paginas);
         System.out.println();
 
         //6
-        double media = libros.stream().mapToInt(Books::getNumeroPaginas).average().getAsDouble();
+        double media = libros.stream()
+                .mapToInt(Books::getNumeroPaginas)
+                .average().getAsDouble();
         String mayorPagQueMedia = libros.stream()
                 .filter(l -> l.getNumeroPaginas() > media)
-                .map(Books::getTitulo).collect(Collectors.joining(", ", "Los libros que superan el promedio en cuanto a número de páginas son: ", "."));
+                .map(Books::getTitulo)
+                .collect(Collectors.joining(", ", "Los libros que superan el promedio en cuanto a número de páginas son: ", "."));
         System.out.println(mayorPagQueMedia);
         System.out.println();
 
@@ -71,17 +81,17 @@ public class BookFuncional {
                 .entrySet()
                 .stream()
                 .filter(b -> b.getValue() > 1)
-                .map(Map.Entry::getKey).collect(Collectors.joining(", ", "Los autores con más de 1 libro son: ", "."));
+                .map(Map.Entry::getKey)
+                .collect(Collectors.joining(", ", "Los autores con más de 1 libro son: ", "."));
         System.out.println(autoresRepetidos);
         System.out.println();
 
         //9
-        int mayNumPag = libros.stream().mapToInt(Books::getNumeroPaginas).filter(b -> b >= 0).max().orElse(0);
-        String libroConMasPaginas = libros.stream()
-                .filter(l -> l.getNumeroPaginas() == mayNumPag)
-                .map(Books::getTitulo)
-                .collect(Collectors.joining(", ", "El libro con mayor numero de páginas es: ", "."));
-        System.out.println(libroConMasPaginas);
+        String titulo = libros.stream()
+                .max(Comparator.comparingInt(Books::getNumeroPaginas))
+                .get()
+                .getTitulo();
+        System.out.println("El libro con más páginas es " + titulo);
         System.out.println();
 
         //10
